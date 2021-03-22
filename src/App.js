@@ -9,14 +9,24 @@ export default class App extends Component {
       fullName : "AHMED Ahlem", 
       bio : "I’m curious, and I enjoy work that challenges me to learn something new and stretch in a different direction. I do my best to stay on top of changes in the state of the art so that I can meet challenges with tools well suited to the job at hand.",  
       profession: "I’m a web devoloper", 
-      showHideProfile: false
+      showHideProfile: false,
+      counter: 0
     };
   }
-  hideComponent() {
-        this.setState({ showHideProfile: !this.state.showHideProfile,
-        imageSrc:'https://cdn3.vectorstock.com/i/1000x1000/01/77/businesswoman-character-avatar-icon-vector-12800177.jpg'});
-  }
-
+  
+  componentDidMount(){
+      this.myInterval = setInterval(()=>{
+        this.setState({counter: this.state.counter +1}) 
+      },1000)
+    }
+    componentWillUnmount() {
+      clearInterval(this.myInterval);
+    }
+    hideComponent() {
+      this.setState({ showHideProfile: !this.state.showHideProfile
+      });
+      this.setState({counter: this.state.counter +1});
+}
   render() {
     return (
       <div className="App">
@@ -31,8 +41,9 @@ export default class App extends Component {
          :null
         }
         <button onClick={() => this.hideComponent()}>
-       Click 
+       show Profile 
      </button>
+     <h4>{this.state.counter}</h4>
      </div>
     )
   }
