@@ -15,8 +15,8 @@ export default class App extends Component {
     };
   }
     hideComponent() {
-      if (this.state.showHideProfile== true){this.setState({timer:0})}
-      else{this.setState({timer: 0})}
+      // if (this.state.showHideProfile== true){this.setState({timer:0})}
+      {this.setState({timer: 0})}
       this.setState({ showHideProfile: !this.state.showHideProfile
       });
 }
